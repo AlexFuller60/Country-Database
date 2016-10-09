@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap 101 Template</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.min.js"></script>
+<script src="js/app.js"></script>
+<script src="controllers/countries.js"></script>
+<script src = "services/services.countries.js"></script>
+<script src = "directives/countries.dir.js"></script>
+    <!-- Bootstrap -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Yatra+One" rel="stylesheet">
+ <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.1.4.js"></script>
+  </head>
+  <body ng-controller="countriesCtrl as vm" >
+
+    <nav class="navbar navbar-default  navbar-fixed-top">
+
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <div class="top">
+  <img src="images/Globe.svg" alt="globe" class="globe">
+  <h1> <a class="navbar-brand" href="#" style="color:white"> Countries <span class="mobilehide">of The World:</span> Facts and Statistics 2016</a></h1>
+</div>
+</div>
+
+       <!--mobile collapse-->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!--filters-->
+        <div class="row" id="form">
+          <!--Search Filter-->
+             <div class="col-md-4 form" >
+             <span class="glyphicon glyphicon-search" aria-hidden="true" ></span>
+            <input type="text" class="form-control" id="search" placeholder="Search Country..." ng-model="search.name" >
+          </div>
+          <!--Sort Filter-->
+           <div class="col-md-4 form">
+            <label>Order</label>
+            <select class="form-control" ng-init="sort='name'" ng-model="sort">
+        <option value="name" selected>Name ASC</option>
+        <option value="-name">Name DES</option>
+		   <option value="population" selected>Population ASC</option>
+        <option value="-population">Population DES</option>
+		   <option value="gdp" selected>GDP ASC</option>
+        <option value="-gdp">GDP DES</option>
+        <option value="area" selected>Area ASC</option>
+         <option value="-area">Area DES</option>
+		  <option value="murderrate" selected>Murder Rate ASC</option>
+          <option value="-murderrate">Murder Rate DES</option>
+         <option value="lifeexpectancy" selected>Life Expectancy ASC</option>
+          <option value="-lifeexpectancy">Life Expectancy DES</option>
+            </select>
+          </div>
+        <!--Region Filter-->
+          <div class="col-md-4 form">
+             <label>Region</label>
+           <select class="form-control" ng-init="region='All'" ng-model="region">
+       <option ng-repeat="opt in vm.regions">{{opt.region}}</option>
+           </select>
+         </div>
+   </div>
+   <!--Map-->
+   <div class="row">
+     <div class="col-md-12">
+<img ng-src="images/regions/{{region}}.jpg" alt="regions" id="region" ng-if="maps" >
+<button class="btn btn-primary" ng-click="maps=true" ng-show="!maps" id="one"><span class="glyphicon glyphicon-menu-down"></span> Map</button>
+<button class="btn btn-primary" ng-click="maps=false" ng-show="maps" id="two"><span class="glyphicon glyphicon-menu-up"></span> Map</button>
+</div>
+</div>
+  </nav>
+</div>
+<!--Main Content-->
+<div  class="container-fluid" id="position">
+<div class="row"  id="countries">
+  <!--Countries directive-->
+<country-card countries="vm.countries", search="search", sort="sort", region="region"></country-card>
+</div>
+</div>
+<footer>
+<h4>Copright @ 2016 Countries of the World By Alex Fuller</h4>
+</footer>
+<script   src="http://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="js/script.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.2.4/firebase.js"></script>
+ <!-- AngularFire -->
+ <script src="https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js"></script>
+  </body>
+</html>

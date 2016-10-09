@@ -1,0 +1,43 @@
+
+
+
+
+
+
+
+
+<div class="col-md-4"  ng-repeat="item in countries|filter:search|filter:region|orderBy:sort"  >
+<div class="panel panel-default"  uib-popover-template="dynamicPopover.templateUrl" popover-placement="right">
+     <script type="text/ng-template" id="myPopoverTemplate.html">
+
+         <p ><span class="lbl" tooltip-placement="top-left" uib-tooltip="Location of country">Region: </span>{{item.region}}</p>
+
+         <p ><span class="lbl" tooltip-placement="top-left" uib-tooltip="Size of country in square kilometers.">Area: </span>{{item.area|number}} Km</p>
+         <p  ><span class="lbl" tooltip-placement="top-left" uib-tooltip="Amount of people living in the country.">Population: </span>{{item.population|number}}</p>
+         <p ><span class="lbl" tooltip-placement="top-left" uib-tooltip="Offical language spoken">Language: </span>{{item.language}}</p>
+         <p ><span class="lbl" tooltip-placement="top-left" uib-tooltip="Net worth of goods & services provided by the country.(Int $)">GDP: </span>{{item.gdp| currency:undefined:0}}</p>
+         <p ><span class="lbl" tooltip-placement="top-left" uib-tooltip="Murder rate per 100,000 people, not including wars.">Murder Rate: </span>{{item.murderrate}}</p>
+         <p><span class="lbl le" tooltip-placement="top-left" uib-tooltip="Average age of death in the country.">Life Exp: </span>{{item.lifeexpectancy}} Years old</p>
+         <p><span class="lblz" style="margin-right:4px">Fun Fact: </span>{{item.funfact}}</p>
+     </script>
+     <div class="panel-header">
+  <h3 class="panel-title">{{item.name}}</h3>
+</div>
+  <div class="panel-body">
+<img ng-src="images/countries/{{item.img}}" alt="country" id="imgcountries">
+<div class="hides">
+         <p><span class="lbl">Region: </span>{{item.region}}</p>
+         <p><span class="lbl">Area: </span>{{item.area|number}} Km</p>
+         <p><span class="lbl">Population: </span>{{item.population|number}}</p>
+         <p><span class="lbl">Offical Language: </span>{{item.language}}</p>
+         <p><span class="lbl">GDP: </span>{{item.gdp}}</p>
+         <p><span class="lbl">Murder Rate: </span>{{item.murderrate}}</p>
+         <p><span class="lbl">Avg Life Expectancy: </span>{{item.lifeexpectancy}}</p>
+         <p><span class="lbl">Fact:</span> {{item.funfact}}</p>
+         </div>
+</div>
+<div class="panel-footer">
+  <h3 class="panel-title">{{item.name}}</h3>
+</div>
+</div>
+</div>
